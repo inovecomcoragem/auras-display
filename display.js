@@ -61,11 +61,17 @@ function updateImage() {
 const peopleUrl = "https://su-auras.herokuapp.com/person";
 let people;
 
-fetch(peopleUrl).then(function(response) {
-  return response.json();
-}).then(function(data) {
-  people = data;
-  updateImage();
-}).catch(function(err) {
-  console.log(err);
-});
+function fetchPeople() {
+  fetch(peopleUrl).then(function(response) {
+    return response.json();
+  }).then(function(data) {
+    people = data;
+    updateImage();
+  }).catch(function(err) {
+    console.log(err);
+  });
+
+  setTimeout(fetchPeople, 120e3);
+}
+
+fetchPeople();

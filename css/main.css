@@ -1,0 +1,99 @@
+@import url("fonts.css");
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 18px;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+s {
+  text-decoration:line-through;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  position: relative;
+
+  background-color: #000;
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("/images/test.jpg");
+  overflow: hidden;
+}
+
+.profile-container {
+  position: absolute;
+  width: 100%;
+  bottom: 150px;
+  transform: rotate(-15deg);
+}
+
+.logo-container {
+  position: absolute;
+  width: 100%;
+  top: 100px;
+  transform: rotate(-15deg);  
+}
+
+.stripe {
+  position: absolute;
+  left: -100vw;
+  width: 40%;
+  min-width: 500px;
+  min-height: 80px;
+  background-color: #fff;
+  transform: skewX(-15deg) translateX(-50%) ;
+}
+
+.text {
+  position: absolute;
+  left: 120vw;
+  font: 900 40px OpenSans;
+  line-height: 75px;
+  vertical-align: middle;
+  padding-bottom: 5px;
+  background-color: rgba(0,0,0,0);
+  color: #000;
+  transform: skewX(-15deg) translateX(-50%) ;
+}
+
+.fade {
+  opacity: 1;
+  transition: opacity 1s linear;
+}
+
+.stripe-animation {
+  animation: bounce-in-from-left 1s ease-out forwards;
+}
+
+.text-animation {
+  animation: bounce-in-from-right 1s ease-out forwards;
+}
+
+.r {
+  font-size: 16px;
+  vertical-align: super;
+}
+
+@keyframes bounce-in-from-left {
+  0%  { left: -100vw; }
+  70% { left: 80%; }
+  100% { left: 50%; }
+}
+
+@keyframes bounce-in-from-right {
+  0%  { left: 120vw; }
+  70% { left: 20%; }
+  100% { left: 50%; }
+}

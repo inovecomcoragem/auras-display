@@ -21,7 +21,7 @@ body {
   height: 100vh;
   position: relative;
 
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0);
   background-position: center center;
   background-size: contain;
   background-repeat: no-repeat;

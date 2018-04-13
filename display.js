@@ -1,3 +1,5 @@
+const photo = document.getElementById('photo');
+
 const profileStripe = document.getElementById('profile-stripe');
 const profileText = document.getElementById('profile-text');
 
@@ -5,8 +7,9 @@ const logoStripe = document.getElementById('logo-stripe');
 const logoText = document.getElementById('logo-text');
 
 function fadeIn() {
-  fadeInProfile();
-  setTimeout(fadeInLogo, 1000);
+  photo.style.opacity = '1';
+  setTimeout(fadeInProfile, 2000);
+  setTimeout(fadeInLogo, 3000);
 }
 
 function fadeInProfile() {
@@ -38,4 +41,31 @@ function reset() {
   profileText.style.opacity = '1';
   logoStripe.style.opacity = '1';
   logoText.style.opacity = '1';
+  photo.style.opacity = '0';
 }
+
+let index = 0;
+
+function updateImage() {
+  var url = people[index]['flickr_url'];
+  photo.style.backgroundImage = "url(" + url + ")";
+
+  profileText.innerHTML = people[index]['_id'];
+
+  fadeIn();
+  index = (index + 1) % people.length;
+  setTimeout(fadeOut, 8000);
+  setTimeout(updateImage, 10000);
+}
+
+const peopleUrl = "https://su-auras.herokuapp.com/person";
+let people;
+
+fetch(peopleUrl).then(function(response) {
+  return response.json();
+}).then(function(data) {
+  people = data;
+  updateImage();
+}).catch(function(err) {
+  console.log(err);
+});

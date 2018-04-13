@@ -8,22 +8,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; media-src 'self'; frame-src player.vimeo.com www.youtube.com; frame-ancestors 'self'; script-src 'self' ajax.googleapis.com www.google-analytics.com cdnjs.cloudflare.com use.fontawesome.com; font-src 'self' data: maxcdn.bootstrapcdn.com fonts.googleapis.com fonts.gstatic.com; style-src 'self' 'unsafe-inline' maxcdn.bootstrapcdn.com fonts.googleapis.com; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' farm1.staticflickr.com data:; media-src 'self'; frame-src player.vimeo.com www.youtube.com; frame-ancestors 'self'; script-src 'self' ajax.googleapis.com www.google-analytics.com cdnjs.cloudflare.com use.fontawesome.com; font-src 'self' data: maxcdn.bootstrapcdn.com fonts.googleapis.com fonts.gstatic.com; style-src 'self' 'unsafe-inline' maxcdn.bootstrapcdn.com fonts.googleapis.com; base-uri 'self'; form-action 'self'; connect-src su-auras.herokuapp.com;">
 
     <link rel="stylesheet" href="css/main.css">
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
   </head>
 
   <body>
-    <div class="profile-container">
-      <div id="profile-stripe" class="stripe fade"></div>
-      <div id="profile-text" class="text fade">CORAGEM</div>
-    </div>
+    <div id="photo" class="photo-container">
+      <div class="profile-container">
+        <div id="profile-stripe" class="stripe fade"></div>
+        <div id="profile-text" class="text fade">CORAGEM</div>
+      </div>
 
-    <div class="logo-container">
-      <div id="logo-stripe" class="stripe fade"></div>
-      <div id="logo-text" class=" text fade">
-        <b>Thought</b>Works<span class="r">®</span>
+      <div class="logo-container">
+        <div id="logo-stripe" class="stripe fade"></div>
+        <div id="logo-text" class=" text fade">
+          <b>Thought</b>Works<span class="r">®</span>
+        </div>
       </div>
     </div>
   </body>

@@ -72,11 +72,11 @@ body {
   transition: opacity 1s linear;
 }
 
-.stripe-animation {
+.left-to-right-animation {
   animation: bounce-in-from-left 1s ease-out forwards;
 }
 
-.text-animation {
+.right-to-left-animation {
   animation: bounce-in-from-right 1s ease-out forwards;
 }
 

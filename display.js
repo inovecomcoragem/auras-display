@@ -17,14 +17,14 @@ function fadeIn() {
 }
 
 function fadeInProfile() {
-  profileStripe.classList.add("stripe-animation");
-  profileText.classList.add("text-animation");
+  profileStripe.classList.add("left-to-right-animation");
+  profileText.classList.add("right-to-left-animation");
   setTimeout(fadeInLogo, 1000);
 }
 
 function fadeInLogo() {
-  logoStripe.classList.add("stripe-animation");
-  logoText.classList.add("text-animation");
+  logoStripe.classList.add("right-to-left-animation");
+  logoText.classList.add("left-to-right-animation");
   setTimeout(fadeOut, 3000);
 }
 
@@ -37,11 +37,11 @@ function fadeOut() {
 }
 
 function reset() {
-  profileStripe.classList.remove("stripe-animation");
-  profileText.classList.remove("text-animation");
+  profileStripe.classList.remove("left-to-right-animation");
+  profileText.classList.remove("right-to-left-animation");
   
-  logoStripe.classList.remove("stripe-animation");
-  logoText.classList.remove("text-animation");
+  logoStripe.classList.remove("right-to-left-animation");
+  logoText.classList.remove("left-to-right-animation");
 
   profileStripe.style.opacity = '1';
   profileText.style.opacity = '1';

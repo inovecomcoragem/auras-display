@@ -1,4 +1,4 @@
-const peopleUrl = "https://su-auras.herokuapp.com/person";
+const peopleUrl = "https://su-auras.herokuapp.com/person/photos/";
 
 const photo = document.getElementById('photo');
 
@@ -9,6 +9,7 @@ const logoStripe = document.getElementById('logo-stripe');
 const logoText = document.getElementById('logo-text');
 
 let people = [];
+let mostRecent = "0";
 
 function fadeIn() {
   photo.style.opacity = '1';
@@ -61,21 +62,23 @@ function updateImage() {
 
     index = (index + 1) % people.length;
   }
-
   fadeIn();
 }
 
-function fetchPeople() {
-  fetch(peopleUrl).then(function(response) {
+function fetchPeople(since) {
+  fetch(peopleUrl + since).then(function(response) {
     return response.json();
   }).then(function(data) {
-    people = data;
+    if(data.length > 0) {
+      people = data.concat(people);
+      index = 0;
+      mostRecent = people[0]['datetime'];
+    }
   }).catch(function(err) {
     console.log(err);
   });
-
-  setTimeout(fetchPeople, 120e3);
+  setTimeout(() => { fetchPeople(mostRecent); }, 60e3);
 }
 
-fetchPeople();
+fetchPeople(mostRecent);
 updateImage();

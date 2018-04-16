@@ -55,7 +55,7 @@ let index = 0;
 
 function updateImage() {
   if(people.length > 0) {
-    var url = people[index]['flickr_url'];
+    var url = people[index]['image_url'];
     photo.style.backgroundImage = "url(" + url + ")";
 
     profileText.innerHTML = people[index]['_id'];

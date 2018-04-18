@@ -13,7 +13,7 @@ let mostRecent = "0";
 
 function fadeIn() {
   photo.style.opacity = '1';
-  setTimeout(fadeInProfile, 2000);
+  setTimeout(fadeInProfile, 5000);
 }
 
 function fadeInProfile() {

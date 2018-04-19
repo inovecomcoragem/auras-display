@@ -15,6 +15,14 @@ body {
   overflow: hidden;
 }
 
+.crop-container {
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  width: 75vh;
+  height: 100vh;
+}
+
 .photo-container {
   margin: 0 auto;
   padding: 0;
@@ -29,6 +37,16 @@ body {
 
   opacity: 1;
   transition: opacity 1s linear;
+}
+
+.stripe-animation-container {
+  margin: 0 auto;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .profile-container {
@@ -48,8 +66,7 @@ body {
 .stripe {
   position: absolute;
   left: -100vw;
-  width: 40%;
-  min-width: 500px;
+  width: 60vh;
   min-height: 80px;
   background-color: #fff;
   transform: skewX(-15deg) translateX(-50%);
@@ -80,19 +97,28 @@ body {
   animation: bounce-in-from-right 1s ease-out forwards;
 }
 
+.burn-in-animation {
+  animation: burn-in 5s ease forwards;
+}
+
 .r {
   font-size: 16px;
   vertical-align: super;
 }
 
 @keyframes bounce-in-from-left {
-  0%  { left: -100vw; }
-  70% { left: 60%; }
+  0%   { left: -100vw; }
+  70%  { left: 60%; }
   100% { left: 50%; }
 }
 
 @keyframes bounce-in-from-right {
-  0%  { left: 120vw; }
-  70% { left: 40%; }
+  0%   { left: 120vw; }
+  70%  { left: 40%; }
   100% { left: 50%; }
+}
+
+@keyframes burn-in {
+  0%   { transform: scale(5); filter: blur(25px); }
+  100% { transform: scale(1); filter: blur(0); }
 }

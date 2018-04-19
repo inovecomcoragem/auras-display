@@ -13,7 +13,8 @@ let mostRecent = "0";
 
 function fadeIn() {
   photo.style.opacity = '1';
-  setTimeout(fadeInProfile, 5000);
+  photo.classList.add("burn-in-animation");
+  setTimeout(fadeInProfile, 7000);
 }
 
 function fadeInProfile() {
@@ -37,6 +38,8 @@ function fadeOut() {
 }
 
 function reset() {
+  photo.classList.remove("burn-in-animation");
+
   profileStripe.classList.remove("left-to-right-animation");
   profileText.classList.remove("right-to-left-animation");
   

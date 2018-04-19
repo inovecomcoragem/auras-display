@@ -39,7 +39,7 @@ function makeMosaic() {
       container.style.height = '100vh';
     }
 
-    setTimeout(fadeIn(container), 500 + 500 * Math.random());
+    setTimeout(fadeIn(container), 1000 + 1000 * Math.random());
     toContainer.push(container);
     index = (index + 1) % people.length;
   }
@@ -54,7 +54,7 @@ function makeContainer() {
     setTimeout(fadeOut(container), 1000);
   }
   clearTimeout(makeContainerTimeout);
-  makeContainerTimeout = setTimeout(makeContainer, 15e3);
+  makeContainerTimeout = setTimeout(makeContainer, 10e3);
 }
 
 function fadeIn(element) {

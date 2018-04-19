@@ -63,6 +63,15 @@ body {
   transform: rotate(-15deg);  
 }
 
+.logo-image {
+  color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('../images/thoughtworks-black.svg');
+}
+
 .stripe {
   position: absolute;
   left: -100vw;
@@ -81,7 +90,7 @@ body {
   padding-bottom: 5px;
   background-color: rgba(0,0,0,0);
   color: #000;
-  transform: skewX(-15deg) translateX(-50%) ;
+  transform: translateX(-50%);
 }
 
 .fade {

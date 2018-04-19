@@ -100,4 +100,4 @@ function fetchPeople(since, cb) {
 }
 
 fetchPeople(mostRecent, clearMosaic);
-setTimeout(() => { window.location.href = '/display.html' }, 180e3);
+setTimeout(() => { window.location.href = './display.html' }, 180e3);

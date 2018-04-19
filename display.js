@@ -85,3 +85,4 @@ function fetchPeople(since) {
 
 fetchPeople(mostRecent);
 updateImage();
+setTimeout(() => { window.location.href = '/mosaic.html' }, 180e3);

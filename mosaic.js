@@ -44,7 +44,7 @@ function makeMosaic() {
     index = (index + 1) % people.length;
   }
   clearTimeout(makeContainerTimeout);
-  makeContainerTimeout = setTimeout(makeContainer, 15e3);
+  makeContainerTimeout = setTimeout(makeContainer, 10e3);
 }
 
 function makeContainer() {
@@ -96,8 +96,8 @@ function fetchPeople(since, cb) {
     console.log(err);
   });
 
-  setTimeout(() => { fetchPeople(mostRecent, clearMosaic); }, 58e3);
+  setTimeout(() => { fetchPeople(mostRecent, clearMosaic); }, 39e3);
 }
 
 fetchPeople(mostRecent, clearMosaic);
-setTimeout(() => { window.location.href = './display.html' }, 180e3);
+setTimeout(() => { window.location.href = './display.html' }, 80e3);

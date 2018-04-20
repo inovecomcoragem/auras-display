@@ -1,4 +1,4 @@
-const peopleUrl = "https://su-auras.herokuapp.com/person/photos/";
+const peopleUrl = 'https://su-auras.herokuapp.com/person/photos/';
 
 const photo = document.getElementById('photo');
 
@@ -9,25 +9,25 @@ const logoStripe = document.getElementById('logo-stripe');
 const logoText = document.getElementById('logo-text');
 
 let people = [];
-let mostRecent = "0";
+let mostRecent = '0';
 let index = 0;
 let updateCount = 0;
 
 function fadeIn() {
   photo.style.opacity = '1';
-  photo.classList.add("burn-in-animation");
+  photo.classList.add('display-burn-in-animation');
   setTimeout(fadeInProfile, 7000);
 }
 
 function fadeInProfile() {
-  profileStripe.classList.add("left-to-right-animation");
-  profileText.classList.add("right-to-left-animation");
+  profileStripe.classList.add('left-to-right-animation');
+  profileText.classList.add('right-to-left-animation');
   setTimeout(fadeInLogo, 1000);
 }
 
 function fadeInLogo() {
-  logoStripe.classList.add("right-to-left-animation");
-  logoText.classList.add("left-to-right-animation");
+  logoStripe.classList.add('right-to-left-animation');
+  logoText.classList.add('left-to-right-animation');
   setTimeout(fadeOut, 3000);
 }
 
@@ -40,13 +40,13 @@ function fadeOut() {
 }
 
 function reset() {
-  photo.classList.remove("burn-in-animation");
+  photo.classList.remove('display-burn-in-animation');
 
-  profileStripe.classList.remove("left-to-right-animation");
-  profileText.classList.remove("right-to-left-animation");
+  profileStripe.classList.remove('left-to-right-animation');
+  profileText.classList.remove('right-to-left-animation');
   
-  logoStripe.classList.remove("right-to-left-animation");
-  logoText.classList.remove("left-to-right-animation");
+  logoStripe.classList.remove('right-to-left-animation');
+  logoText.classList.remove('left-to-right-animation');
 
   profileStripe.style.opacity = '1';
   profileText.style.opacity = '1';
@@ -63,7 +63,7 @@ function updateImage() {
 
   if(people.length > 0) {
     var url = people[index]['image_url'];
-    photo.style.backgroundImage = "url(" + url + ")";
+    photo.style.backgroundImage = `url(${url})`;
 
     profileText.innerHTML = people[index]['_id'];
 

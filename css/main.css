@@ -106,8 +106,8 @@ body {
   animation: bounce-in-from-right 1s ease-out forwards;
 }
 
-.burn-in-animation {
-  animation: burn-in 5s ease forwards;
+.display-burn-in-animation {
+  animation: display-burn-in 5s ease forwards;
 }
 
 @keyframes bounce-in-from-left {
@@ -122,7 +122,7 @@ body {
   100% { left: 50%; }
 }
 
-@keyframes burn-in {
+@keyframes display-burn-in {
   0%   { transform: scale(5); filter: blur(25px); }
   100% { transform: scale(1); filter: blur(0); }
 }

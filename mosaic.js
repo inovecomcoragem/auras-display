@@ -1,6 +1,6 @@
 const peopleUrl = "https://su-auras.herokuapp.com/person/photos/";
 
-const mainContainer = document.getElementById('main');
+const mainContainer = document.getElementById('main-mosaic');
 
 let people = [];
 
@@ -9,11 +9,9 @@ let index = 0;
 
 let toDisplay = [];
 let toContainer = [];
-let makeContainerTimeout;
 
 function clearMosaic() {
   mainContainer.style.opacity = '0';
-  clearTimeout(makeContainerTimeout);
   setTimeout(resetMosaic, 1000);
 }
 
@@ -22,64 +20,65 @@ function resetMosaic() {
     mainContainer.removeChild(mainContainer.firstChild);
   }
   mainContainer.classList.remove('mosaic-photo');
-  mainContainer.classList.remove('mosaic-container');
+  mainContainer.classList.remove('mosaic-container-quarter');
   toDisplay.push(mainContainer);
-  makeMosaic();
+  setTimeout(displayPhotos, 1);
 }
 
-function makeMosaic() {
+function displayPhotos() {
   while (toDisplay.length > 0) {
-    let container = toDisplay.shift();
+    let photo = toDisplay.shift();
 
-    container.style.backgroundImage = `url(${ people[index]['image_url'] })`;
-    container.classList.add('mosaic-photo');
+    photo.style.backgroundImage = `url(${ people[index]['image_url'] })`;
+    index = (index + 1) % people.length;
 
-    if (container.classList.contains('main-mosaic-container')) {
-      container.style.width = '75vh';
-      container.style.height = '100vh';
+    photo.classList.add('mosaic-photo');
+
+    if (photo.classList.contains('mosaic-container-full')) {
+      photo.style.width = '75vh';
+      photo.style.height = '100vh';
     }
 
-    setTimeout(fadeIn(container), 1000 + 1000 * Math.random());
-    toContainer.push(container);
-    index = (index + 1) % people.length;
+    setTimeout(fadePhotoIn(photo), 1000 + 1000 * Math.random());
+    toContainer.push(photo);
   }
-  clearTimeout(makeContainerTimeout);
-  makeContainerTimeout = setTimeout(makeContainer, 10e3);
+  setTimeout(fadePhotoOutAndMakeContainers, 6e3);
 }
 
-function makeContainer() {
-  while (toContainer.length > 0) {
-    let container = toContainer.shift();
-    container.style.opacity = '0';
-    setTimeout(fadeOut(container), 1000);
-  }
-  clearTimeout(makeContainerTimeout);
-  makeContainerTimeout = setTimeout(makeContainer, 10e3);
-}
-
-function fadeIn(element) {
+function fadePhotoIn(element) {
   return function() {
     element.style.opacity = '1';
   };
 }
 
-function fadeOut(element) {
+function fadePhotoOutAndMakeContainers() {
+  while (toContainer.length > 0) {
+    let photo = toContainer.shift();
+    photo.style.opacity = '0';
+    setTimeout(switchClasses(photo), 1000);
+  }
+}
+
+function switchClasses(element) {
   return function() {
     element.classList.remove('mosaic-photo');
-    element.classList.add('mosaic-container');
+    if (!element.classList.contains('mosaic-container-full')) {
+      element.classList.add('mosaic-container-quarter');
+    }
     element.style.backgroundImage = 'none';
     element.style.opacity = '1';
-    splitContainer(element);
+    addPhotosToContainer(element);
   };
 }
 
-function splitContainer(container) {
+function addPhotosToContainer(container) {
   for(let i = 0; i < 4; i++) {
     let p = document.createElement('div');
+    p.classList.add('mosaic-photo');
     container.appendChild(p);
     toDisplay.push(p);
   }
-  setTimeout(makeMosaic, 1000);
+  setTimeout(displayPhotos, 1);
 }
 
 function fetchPeople(since, cb) {
@@ -91,12 +90,11 @@ function fetchPeople(since, cb) {
       index = 0;
       mostRecent = people[0]['datetime'];
     }
-    if(cb) { cb(); };
+    if(cb) { cb(); }
   }).catch(function(err) {
     console.log(err);
   });
-
-  setTimeout(() => { fetchPeople(mostRecent, clearMosaic); }, 39e3);
+  setTimeout(() => { fetchPeople(mostRecent, clearMosaic); }, 28e3);
 }
 
 fetchPeople(mostRecent, clearMosaic);

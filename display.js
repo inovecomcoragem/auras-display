@@ -10,6 +10,8 @@ const logoText = document.getElementById('logo-text');
 
 let people = [];
 let mostRecent = "0";
+let index = 0;
+let updateCount = 0;
 
 function fadeIn() {
   photo.style.opacity = '1';
@@ -54,9 +56,11 @@ function reset() {
   setTimeout(updateImage, 1000);
 }
 
-let index = 0;
-
 function updateImage() {
+  if (updateCount++ > 10) {
+    window.location.href = './mosaic.html';
+  }
+
   if(people.length > 0) {
     var url = people[index]['image_url'];
     photo.style.backgroundImage = "url(" + url + ")";
@@ -84,4 +88,3 @@ function fetchPeople(since) {
 
 fetchPeople(mostRecent);
 updateImage();
-setTimeout(() => { window.location.href = './mosaic.html' }, 60e3);

@@ -1,4 +1,4 @@
-const peopleUrl = "https://su-auras.herokuapp.com/person/photos/";
+const peopleUrl = 'https://su-auras.herokuapp.com/person/photos/';
 
 const mainContainer = document.getElementById('main-mosaic');
 
@@ -7,7 +7,7 @@ let people = [];
 let toDisplay = [];
 let toContainer = [];
 
-let mostRecent = "0";
+let mostRecent = '0';
 let index = 0;
 let loopCounter = 0;
 let displayCount = 0;
@@ -52,9 +52,11 @@ function displayPhotos() {
     if (photo.classList.contains('mosaic-container-full')) {
       photo.style.width = '75vh';
       photo.style.height = '100vh';
+      setTimeout(fadePhotoIn(photo), 200);
+    } else {
+      setTimeout(fadePhotoIn(photo), 500 + 2000 * Math.random());
     }
 
-    setTimeout(fadePhotoIn(photo), 500 + 1000 * Math.random());
     toContainer.push(photo);
   }
   setTimeout(fadePhotoOutAndMakeContainers, 6e3);

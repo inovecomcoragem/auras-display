@@ -80,9 +80,8 @@ function fetchPeople(since) {
   }).catch(function(err) {
     console.log(err);
   });
-  setTimeout(() => { fetchPeople(mostRecent); }, 60e3);
 }
 
 fetchPeople(mostRecent);
 updateImage();
-setTimeout(() => { window.location.href = './mosaic.html' }, 90e3);
+setTimeout(() => { window.location.href = './mosaic.html' }, 60e3);

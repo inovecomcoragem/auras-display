@@ -65,7 +65,8 @@ function updateImage() {
     let url = people[index]['image_url'];
     photo.style.backgroundImage = `url(${url})`;
 
-    let profile_b = people[index]['profile'].replace(/([^\s]*)$/, '<br><b>$1</b>');
+    let profile = people[index]['profile'] || 'Criadora de Possibilidades'
+    let profile_b = profile.replace(/([^\s]*)$/, '<br><b>$1</b>');
     profileText.innerHTML = profile_b;
 
     index = (index + 1) % people.length;

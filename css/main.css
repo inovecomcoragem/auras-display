@@ -98,6 +98,16 @@ body {
   transition: opacity 1s linear;
 }
 
+#profile-text {
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 30px;
+  text-align: center;
+  line-height: 1.1;
+  vertical-align: middle;
+  padding-top: 8px;
+}
+
 .left-to-right-animation {
   animation: bounce-in-from-left 1s ease-out forwards;
 }

@@ -62,10 +62,11 @@ function updateImage() {
   }
 
   if(people.length > 0) {
-    var url = people[index]['image_url'];
+    let url = people[index]['image_url'];
     photo.style.backgroundImage = `url(${url})`;
 
-    profileText.innerHTML = people[index]['_id'];
+    let profile_b = people[index]['profile'].replace(/([^\s]*)$/, '<br><b>$1</b>');
+    profileText.innerHTML = profile_b;
 
     index = (index + 1) % people.length;
   }

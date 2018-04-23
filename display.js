@@ -22,10 +22,10 @@ function fadeIn() {
   photoL.classList.add('display-burn-in-animation');
   photoR.style.opacity = '1';
   photoR.classList.add('display-burn-in-animation');
-  setTimeout(fadeInPrashe, 7000);
+  setTimeout(fadeInPhrase, 7000);
 }
 
-function fadeInPrashe() {
+function fadeInPhrase() {
   phraseStripe.classList.add('left-to-right-animation');
   phraseText.classList.add('right-to-left-animation');
   setTimeout(fadeOut, 3000);

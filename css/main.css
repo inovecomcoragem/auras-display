@@ -15,12 +15,15 @@ body {
   overflow: hidden;
 }
 
-.crop-container {
+.main-container {
   margin: 0 auto;
   padding: 0;
   overflow: hidden;
-  width: 75vh;
+  width: 150vh;
   height: 100vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 
 .photo-container {
@@ -49,33 +52,17 @@ body {
   left: 0;
 }
 
-.profile-container {
+.phrase-container {
   position: absolute;
   width: 100%;
-  bottom: 150px;
+  bottom: 180px;
   transform: rotate(-15deg);
-}
-
-.logo-container {
-  position: absolute;
-  width: 100%;
-  top: 100px;
-  transform: rotate(-15deg);  
-}
-
-.logo-image {
-  color: rgba(0, 0, 0, 0);
-  background-color: rgba(0, 0, 0, 0);
-  background-position: center center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-image: url('../images/thoughtworks-black.svg');
 }
 
 .stripe {
   position: absolute;
   left: -100vw;
-  width: 60vh;
+  width: 50vw;
   min-height: 80px;
   background-color: #fff;
   transform: skewX(-15deg) translateX(-50%);
@@ -84,8 +71,11 @@ body {
 .text {
   position: absolute;
   left: 120vw;
-  font: 900 40px OpenSans;
+  min-width: 50vw;
+  font: 300 40px OpenSans;
+  text-align: center;
   line-height: 75px;
+  text-transform: uppercase;
   vertical-align: middle;
   padding-bottom: 5px;
   background-color: rgba(0,0,0,0);
@@ -96,16 +86,6 @@ body {
 .fade {
   opacity: 1;
   transition: opacity 1s linear;
-}
-
-#profile-text {
-  text-transform: uppercase;
-  font-weight: 300;
-  font-size: 30px;
-  text-align: center;
-  line-height: 1.1;
-  vertical-align: middle;
-  padding-top: 8px;
 }
 
 .left-to-right-animation {
@@ -133,8 +113,8 @@ body {
 }
 
 @keyframes display-burn-in {
-  0%   { transform: scale(5); filter: blur(25px); }
-  100% { transform: scale(1); filter: blur(0); }
+  0%   { filter: blur(25px); }
+  100% { filter: blur(0); }
 }
 
 .mosaic-container-full {

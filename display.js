@@ -1,75 +1,71 @@
 const peopleUrl = 'https://su-auras.herokuapp.com/person/photos/';
 
-const photo = document.getElementById('photo');
+const photoL = document.getElementById('photoL');
+const photoR = document.getElementById('photoR');
 
-const profileStripe = document.getElementById('profile-stripe');
-const profileText = document.getElementById('profile-text');
-
-const logoStripe = document.getElementById('logo-stripe');
-const logoText = document.getElementById('logo-text');
+const phraseStripe = document.getElementById('phrase-stripe');
+const phraseText = document.getElementById('phrase-text');
 
 let people = [];
 let mostRecent = '0';
 let index = 0;
-let updateCount = 0;
+let inoveCom = ['coragem',
+                'confiança',
+                'emoção',
+                'rebeldia',
+                'energia',
+                'propósito',
+                'sabedoria'];
 
 function fadeIn() {
-  photo.style.opacity = '1';
-  photo.classList.add('display-burn-in-animation');
-  setTimeout(fadeInProfile, 7000);
+  photoL.style.opacity = '1';
+  photoL.classList.add('display-burn-in-animation');
+  photoR.style.opacity = '1';
+  photoR.classList.add('display-burn-in-animation');
+  setTimeout(fadeInPrashe, 7000);
 }
 
-function fadeInProfile() {
-  profileStripe.classList.add('left-to-right-animation');
-  profileText.classList.add('right-to-left-animation');
-  setTimeout(fadeInLogo, 1000);
-}
-
-function fadeInLogo() {
-  logoStripe.classList.add('right-to-left-animation');
-  logoText.classList.add('left-to-right-animation');
+function fadeInPrashe() {
+  phraseStripe.classList.add('left-to-right-animation');
+  phraseText.classList.add('right-to-left-animation');
   setTimeout(fadeOut, 3000);
 }
 
 function fadeOut() {
-  profileStripe.style.opacity = '0';
-  profileText.style.opacity = '0';
-  logoStripe.style.opacity = '0';
-  logoText.style.opacity = '0';
+  phraseStripe.style.opacity = '0';
+  phraseText.style.opacity = '0';
   setTimeout(reset, 1000);
 }
 
 function reset() {
-  photo.classList.remove('display-burn-in-animation');
+  photoL.classList.remove('display-burn-in-animation');
+  photoR.classList.remove('display-burn-in-animation');
 
-  profileStripe.classList.remove('left-to-right-animation');
-  profileText.classList.remove('right-to-left-animation');
-  
-  logoStripe.classList.remove('right-to-left-animation');
-  logoText.classList.remove('left-to-right-animation');
+  phraseStripe.classList.remove('left-to-right-animation');
+  phraseText.classList.remove('right-to-left-animation');
 
-  profileStripe.style.opacity = '1';
-  profileText.style.opacity = '1';
-  logoStripe.style.opacity = '1';
-  logoText.style.opacity = '1';
-  photo.style.opacity = '0';
+  phraseStripe.style.opacity = '1';
+  phraseText.style.opacity = '1';
+  photoL.style.opacity = '0';
+  photoR.style.opacity = '0';
   setTimeout(updateImage, 1000);
 }
 
 function updateImage() {
-  if (updateCount++ > 10) {
+  if (index > 20) {
     window.location.href = './mosaic.html';
   }
 
   if(people.length > 0) {
-    let url = people[index]['image_url'];
-    photo.style.backgroundImage = `url(${url})`;
+    let phrase = 'inove com ' + inoveCom[(index / 2) % inoveCom.length];
+    let phrase_b = phrase.replace(/([^\s]*)$/, '<b>$1</b>');
+    phraseText.innerHTML = phrase_b;
 
-    let profile = people[index]['profile'] || 'Criadora de Possibilidades'
-    let profile_b = profile.replace(/([^\s]*)$/, '<br><b>$1</b>');
-    profileText.innerHTML = profile_b;
+    let url = people[index++ % people.length]['image_url'];
+    photoL.style.backgroundImage = `url(${url})`;
 
-    index = (index + 1) % people.length;
+    url = people[index++ % people.length]['image_url'];
+    photoR.style.backgroundImage = `url(${url})`;
   }
   fadeIn();
 }

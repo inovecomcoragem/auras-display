@@ -1,9 +1,11 @@
 const peopleUrl = 'https://su-auras.herokuapp.com/person/photos/';
 
-const mainContainer = document.getElementById('main-mosaic');
+const mainContainerL = document.getElementById('main-mosaicL');
+const mainContainerR = document.getElementById('main-mosaicR');
+const phraseStripe = document.getElementById('phrase-stripe');
+const phraseText = document.getElementById('phrase-text');
 
 let people = [];
-
 let toDisplay = [];
 let toContainer = [];
 
@@ -11,11 +13,21 @@ let mostRecent = '0';
 let index = 0;
 let loopCounter = 0;
 let displayCount = 0;
+let phraseIndex = 0;
 let displayPhotoTimeout;
+
+let inoveCom = ['coragem',
+                'confiança',
+                'emoção',
+                'rebeldia',
+                'energia',
+                'propósito',
+                'sabedoria'];
 
 function clearMosaic() {
   displayCount = 0;
-  mainContainer.style.opacity = '0';
+  mainContainerL.style.opacity = '0';
+  mainContainerR.style.opacity = '0';
   setTimeout(resetMosaic, 1000);
 }
 
@@ -24,14 +36,21 @@ function resetMosaic() {
     window.location.href = './display.html';
   }
 
-  while (mainContainer.firstChild) {
-    mainContainer.removeChild(mainContainer.firstChild);
+  while (mainContainerL.firstChild) {
+    mainContainerL.removeChild(mainContainerL.firstChild);
   }
-  mainContainer.classList.remove('mosaic-photo');
-  mainContainer.classList.remove('mosaic-container-quarter');
+  while (mainContainerR.firstChild) {
+    mainContainerR.removeChild(mainContainerR.firstChild);
+  }
+  mainContainerL.classList.remove('mosaic-photo');
+  mainContainerR.classList.remove('mosaic-photo');
+  mainContainerL.classList.remove('mosaic-container-quarter');
+  mainContainerR.classList.remove('mosaic-container-quarter');
+
   toDisplay = [];
   toContainer = [];
-  toDisplay.push(mainContainer);
+  toDisplay.push(mainContainerL);
+  toDisplay.push(mainContainerR);
   clearTimeout(displayPhotoTimeout);
   displayPhotoTimeout = setTimeout(displayPhotos, 1);
 }
@@ -52,20 +71,26 @@ function displayPhotos() {
     if (photo.classList.contains('mosaic-container-full')) {
       photo.style.width = '75vh';
       photo.style.height = '100vh';
-      setTimeout(fadePhotoIn(photo), 200);
+      setTimeout(fadeInPhoto(photo), 200);
     } else {
-      setTimeout(fadePhotoIn(photo), 500 + 2000 * Math.random());
+      setTimeout(fadeInPhoto(photo), 500 + 2000 * Math.random());
     }
 
     toContainer.push(photo);
   }
+  setTimeout(fadeInPhrase, 4000);
   setTimeout(fadePhotoOutAndMakeContainers, 6e3);
 }
 
-function fadePhotoIn(element) {
+function fadeInPhoto(element) {
   return function() {
     element.style.opacity = '1';
   };
+}
+
+function fadeInPhrase() {
+  phraseStripe.classList.add('left-to-right-animation');
+  phraseText.classList.add('right-to-left-animation');
 }
 
 function fadePhotoOutAndMakeContainers() {
@@ -74,8 +99,23 @@ function fadePhotoOutAndMakeContainers() {
     photo.style.opacity = '0';
     setTimeout(switchClassesAndAddChildrenPhotos(photo), 1000);
   }
+  phraseStripe.style.opacity = '0';
+  phraseText.style.opacity = '0';
+  setTimeout(switchPhrase, 1000);
   clearTimeout(displayPhotoTimeout);
   displayPhotoTimeout = setTimeout(displayPhotos, 1100);
+}
+
+function switchPhrase() {
+  let phrase = 'inove com ' + inoveCom[phraseIndex++ % inoveCom.length];
+  let phrase_b = phrase.replace(/([^\s]*)$/, '<b>$1</b>');
+  phraseText.innerHTML = phrase_b;
+
+  phraseStripe.classList.remove('left-to-right-animation');
+  phraseText.classList.remove('right-to-left-animation');
+
+  phraseStripe.style.opacity = '1';
+  phraseText.style.opacity = '1';
 }
 
 function switchClassesAndAddChildrenPhotos(element) {

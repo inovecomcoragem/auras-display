@@ -1,4 +1,4 @@
-const peopleUrl = 'https://su-auras.herokuapp.com/person/photos/';
+const peopleUrl = 'https://auras-app.herokuapp.com/person/photos/';
 
 const mainContainerL = document.getElementById('main-mosaicL');
 const mainContainerR = document.getElementById('main-mosaicR');

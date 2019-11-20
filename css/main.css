@@ -100,13 +100,11 @@ body {
 
 @keyframes bounce-in-from-left {
   0%   { left: -100vw; }
-  70%  { left: 60%; }
   100% { left: 50%; }
 }
 
 @keyframes bounce-in-from-right {
   0%   { left: 120vw; }
-  70%  { left: 40%; }
   100% { left: 50%; }
 }
 

@@ -24,7 +24,7 @@ body {
   flex-wrap: nowrap;
 }
 
-.photo-container {
+.photo-container, .qr-container {
   margin: 0 auto;
   padding: 0;
   width: 75vh;
@@ -38,6 +38,12 @@ body {
 
   opacity: 1;
   transition: opacity 1s linear;
+}
+
+.qr-container {
+  background-image: url(../images/qr.png);
+  background-position: top;
+  width: 64vh;
 }
 
 .stripe-animation-container {
@@ -79,6 +85,10 @@ body {
   background-color: rgba(0,0,0,0);
   color: #000;
   transform: translateX(-50%);
+}
+
+.recruit-phrase-container .stripe {
+  width: 90vw;
 }
 
 .fade {

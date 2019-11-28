@@ -151,4 +151,6 @@ function fetchPeople(since, cb) {
   });
 }
 
-fetchPeople(mostRecent, clearMosaic);
+window.onload = function() {
+  fetchPeople(mostRecent, clearMosaic);
+}

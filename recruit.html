@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TW: Auras Display</title>
+
+    <meta name="description" content="Auras App">
+    <meta name="keywords" content="art, arte, aura, auras">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' tw-su-auras.s3.amazonaws.com data:; media-src 'self'; script-src 'self'; font-src 'self' data: nt https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com ; base-uri 'self'; form-action 'self'; connect-src auras-app.herokuapp.com;">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+  </head>
+
+  <body>
+    <div class="main-container">
+      <div id="qr" class="qr-container"></div>
+
+      <div class="stripe-animation-container">
+        <div class="phrase-container recruit-phrase-container">
+          <div id="phrase-stripe" class="stripe fade"></div>
+          <div id="phrase-text" class="text fade">INOVE COM A <b>THOUGHTWORKS</b></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="recruit.js"></script>
+</html>

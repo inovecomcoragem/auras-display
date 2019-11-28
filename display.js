@@ -53,7 +53,7 @@ function reset() {
 
 function updateImage() {
   if (index > 20) {
-    window.location.href = './mosaic.html';
+    window.location.href = './recruit.html';
   }
 
   if(people.length > 0) {
@@ -84,5 +84,7 @@ function fetchPeople(since) {
   });
 }
 
-fetchPeople(mostRecent);
-updateImage();
+window.onload = function() {
+  fetchPeople(mostRecent);
+  updateImage();
+}

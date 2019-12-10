@@ -52,7 +52,7 @@ function reset() {
 }
 
 function updateImage() {
-  if (index > 20) {
+  if (index > 10) {
     window.location.href = './recruit.html';
   }
 

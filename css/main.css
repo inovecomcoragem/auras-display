@@ -91,6 +91,13 @@ body {
   width: 90vw;
 }
 
+.recruit-qr-title {
+  color: #ffffff;
+  font: 500 40px "Open Sans";
+  text-align: center;
+  padding-bottom: 14px;
+}
+
 .fade {
   opacity: 1;
   transition: opacity 1s linear;

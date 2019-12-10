@@ -43,7 +43,7 @@ body {
 .qr-container {
   background-image: url(../images/qrc.png);
   background-position: top;
-  width: 64vh;
+  width: 55vh;
 }
 
 .stripe-animation-container {
